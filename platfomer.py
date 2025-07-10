@@ -4,8 +4,8 @@ import arcade
 
 
 SCREEN_TITLE = "Lesson 7&8 - Integrating tile maps"
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
 
 TILE_SPRITE_SCALING = 1.0
 PLAYER_SCALING = 0.5
@@ -133,9 +133,20 @@ class GameView(arcade.View):
 
     def on_draw(self):
         self.clear()
+        self.tile_map.sprite_lists["background"].draw()
+
         with self.game_camera.activate():
-            for sprite_list in self.tile_map.sprite_lists.values():
-                sprite_list.draw()
+            self.tile_map.sprite_lists['platforms'].draw()
+            self.tile_map.sprite_lists['coins'].draw()
+            self.tile_map.sprite_lists['stones'].draw()
+            self.tile_map.sprite_lists['benches'].draw()
+            self.tile_map.sprite_lists['fences'].draw()
+            self.tile_map.sprite_lists['trees'].draw()
+            self.tile_map.sprite_lists['teleport_up'].draw()
+            # self.tile_map.sprite_lists['target_tp_up'].draw()
+
+            #
+
             self.player_list.draw()
 
         with self.gui_camera.activate():

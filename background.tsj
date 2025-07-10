@@ -1,0 +1,84 @@
+{ "columns":0,
+ "grid":
+    {
+     "height":1,
+     "orientation":"orthogonal",
+     "width":1
+    },
+ "margin":0,
+ "name":"background",
+ "spacing":0,
+ "tilecount":11,
+ "tiledversion":"1.11.2",
+ "tileheight":324,
+ "tiles":[
+        {
+         "id":0,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/1.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":1,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/2.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":2,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/3.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":3,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/4.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":4,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/5.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":5,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Day\/Background.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":6,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Night\/1.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":7,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Night\/2.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":8,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Night\/3.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":9,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Night\/4.png",
+         "imageheight":324,
+         "imagewidth":576
+        }, 
+        {
+         "id":10,
+         "image":"..\/Downloads\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/2 Background\/Night\/5.png",
+         "imageheight":324,
+         "imagewidth":576
+        }],
+ "tilewidth":576,
+ "type":"tileset",
+ "version":"1.10"
+}
