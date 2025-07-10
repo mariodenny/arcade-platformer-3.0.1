@@ -1,0 +1,129 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_1.tmj",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/laragon/www/python-arcade/Lesson8_Integrating_With_Tilemap/mymap/level1.tmj": {
+            "expandedObjectLayers": [
+                7,
+                4
+            ],
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 990,
+                "y": 516
+            }
+        },
+        "C:/laragon/www/python-arcade/Lesson8_Integrating_With_Tilemap/mymap/level2.tmj": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -102,
+                "y": 188
+            }
+        },
+        "Card.tsj": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "fence_greenzone.tsj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "level_1.tmj": {
+            "expandedObjectLayers": [
+                11,
+                18,
+                19
+            ],
+            "scale": 1.5,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 383,
+                "y": 366
+            }
+        },
+        "level_2.tmj": {
+            "scale": 1.1033854166666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 480.793013924947,
+                "y": 382.4592872315318
+            }
+        },
+        "level_3.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 98.99999999999999,
+                "y": 499.33333333333326
+            }
+        },
+        "stones.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiles.tsj": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset_greenzone.tsj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1.5
+        },
+        "tileset_medieval.tsj": {
+            "dynamicWrapping": true
+        },
+        "trees.tsj": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/DENNY MARIO/Downloads",
+    "map.height": 24,
+    "map.lastUsedFormat": "json",
+    "map.width": 32,
+    "openFiles": [
+        "tileset_greenzone.tsj",
+        "fence_greenzone.tsj",
+        "level_1.tmj",
+        "trees.tsj",
+        "stones.tsj",
+        "level_2.tmj",
+        "level_3.tmj"
+    ],
+    "project": "tiled-mymaps.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "tileset_greenzone.tsj",
+        "fence_greenzone.tsj",
+        "level_3.tmj",
+        "level_2.tmj",
+        "stones.tsj",
+        "trees.tsj",
+        "level_1.tmj",
+        "Card.tsj",
+        "tiles.tsj"
+    ],
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 24,
+        "width": 192
+    },
+    "tileset.type": 0
+}

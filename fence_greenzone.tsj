@@ -1,0 +1,78 @@
+{ "columns":0,
+ "grid":
+    {
+     "height":1,
+     "orientation":"orthogonal",
+     "width":1
+    },
+ "margin":0,
+ "name":"fence_greenzone",
+ "spacing":0,
+ "tilecount":10,
+ "tiledversion":"1.11.0",
+ "tileheight":64,
+ "tiles":[
+        {
+         "id":0,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/1.png",
+         "imageheight":64,
+         "imagewidth":35
+        }, 
+        {
+         "id":1,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/2.png",
+         "imageheight":64,
+         "imagewidth":35
+        }, 
+        {
+         "id":2,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/2_1.png",
+         "imageheight":41,
+         "imagewidth":17
+        }, 
+        {
+         "id":3,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/3.png",
+         "imageheight":64,
+         "imagewidth":35
+        }, 
+        {
+         "id":4,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/4.png",
+         "imageheight":64,
+         "imagewidth":35
+        }, 
+        {
+         "id":5,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/4_1.png",
+         "imageheight":41,
+         "imagewidth":3
+        }, 
+        {
+         "id":6,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/5.png",
+         "imageheight":64,
+         "imagewidth":35
+        }, 
+        {
+         "id":7,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/6.png",
+         "imageheight":64,
+         "imagewidth":48
+        }, 
+        {
+         "id":8,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Fence\/7.png",
+         "imageheight":64,
+         "imagewidth":48
+        }, 
+        {
+         "id":9,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Downloads\/Fw3P.gif",
+         "imageheight":56,
+         "imagewidth":56
+        }],
+ "tilewidth":56,
+ "type":"tileset",
+ "version":"1.10"
+}

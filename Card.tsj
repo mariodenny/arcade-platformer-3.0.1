@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/4 Animated objects\/Card.png",
+ "imageheight":24,
+ "imagewidth":192,
+ "margin":0,
+ "name":"Card",
+ "spacing":0,
+ "tilecount":1,
+ "tiledversion":"1.11.0",
+ "tileheight":24,
+ "tilewidth":192,
+ "type":"tileset",
+ "version":"1.10"
+}

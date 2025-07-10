@@ -1,0 +1,42 @@
+{ "columns":0,
+ "grid":
+    {
+     "height":1,
+     "orientation":"orthogonal",
+     "width":1
+    },
+ "margin":0,
+ "name":"trees",
+ "spacing":0,
+ "tilecount":4,
+ "tiledversion":"1.11.0",
+ "tileheight":190,
+ "tiles":[
+        {
+         "id":0,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Other\/Tree1.png",
+         "imageheight":103,
+         "imagewidth":62
+        }, 
+        {
+         "id":1,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Other\/Tree2.png",
+         "imageheight":129,
+         "imagewidth":124
+        }, 
+        {
+         "id":2,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Other\/Tree3.png",
+         "imageheight":190,
+         "imagewidth":175
+        }, 
+        {
+         "id":3,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Other\/Tree4.png",
+         "imageheight":190,
+         "imagewidth":175
+        }],
+ "tilewidth":175,
+ "type":"tileset",
+ "version":"1.10"
+}

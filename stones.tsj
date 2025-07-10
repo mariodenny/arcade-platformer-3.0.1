@@ -1,0 +1,54 @@
+{ "columns":0,
+ "grid":
+    {
+     "height":1,
+     "orientation":"orthogonal",
+     "width":1
+    },
+ "margin":0,
+ "name":"stones",
+ "spacing":0,
+ "tilecount":6,
+ "tiledversion":"1.11.0",
+ "tileheight":44,
+ "tiles":[
+        {
+         "id":0,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/1.png",
+         "imageheight":7,
+         "imagewidth":10
+        }, 
+        {
+         "id":1,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/2.png",
+         "imageheight":14,
+         "imagewidth":22
+        }, 
+        {
+         "id":2,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/3.png",
+         "imageheight":16,
+         "imagewidth":27
+        }, 
+        {
+         "id":3,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/4.png",
+         "imageheight":17,
+         "imagewidth":39
+        }, 
+        {
+         "id":4,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/5.png",
+         "imageheight":22,
+         "imagewidth":46
+        }, 
+        {
+         "id":5,
+         "image":"..\/..\/..\/..\/Users\/DENNY MARIO\/Documents\/PythonArcadeAsset\/2DPlatformer\/craftpix-net-846754-free-green-zone-tileset-pixel-art\/3 Objects\/Stones\/6.png",
+         "imageheight":44,
+         "imagewidth":70
+        }],
+ "tilewidth":70,
+ "type":"tileset",
+ "version":"1.10"
+}
