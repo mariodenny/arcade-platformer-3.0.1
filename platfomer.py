@@ -1,6 +1,7 @@
 from time import sleep
 
 import arcade
+import random
 
 
 SCREEN_TITLE = "Lesson 7&8 - Integrating tile maps"
@@ -14,10 +15,43 @@ GRID_PIXEL_SIZE = SPRITE_PIXEL_SIZE * TILE_SPRITE_SCALING
 CAMERA_PAN_SPEED = 1.0 # KECEPATAN MOVEMENT KAMERA
 
 # PHYSICS
-MOVEMENT_SPEED = 5
-JUMP_SPEED = 15
+MOVEMENT_SPEED = 3
+JUMP_SPEED = 10
 GRAVITY = 1
+UPDATES_PER_FRAME = 5
 
+RIGHT_FACING = 0
+LEFT_FACING = 1
+
+class PlayerCharacter(arcade.Sprite):
+    def __init__(self, idle_texture_pair,walk_texture_pair):
+        self.character_face_direction = RIGHT_FACING
+
+        self.cur_texture = 0
+        self.idle_texture_pair = idle_texture_pair
+        self.walk_textures = walk_texture_pair
+
+        self.points = [
+            [-22.-64],
+            [22,-6],
+            [22,28],
+            [-22,28]
+        ]
+
+        super().__init__(self.idle_texture_pair[0], scale=PLAYER_SCALING)
+
+    def update_animation(self, delta_time: float = 1/60):
+        if self.change_x < 0 and self.character_face_direction ==RIGHT_FACING:
+            self.character_face_direction = LEFT_FACING
+        elif self.change_x > 0 and self.character_face_direction ==LEFT_FACING:
+            self.character_face_direction = RIGHT_FACING
+
+        self.cur_texture += 1
+        if self.cur_texture > 7 * UPDATES_PER_FRAME:
+            self.cur_texture = 0
+        frame = self.cur_texture // UPDATES_PER_FRAME
+        direction = self.character_face_direction
+        self.texture = self.walk_textures[frame][direction]
 
 class GameView(arcade.View):
     def __init__(self):
@@ -26,8 +60,26 @@ class GameView(arcade.View):
         self.tile_map = None
         # Prepare object for player
         self.player_list = None
+        self.player = None
         self.player_sprite = None
         self.score = 0
+
+        character_types = [
+            ':resources:images/animated_characters/female_adventurer/femaleAdventurer',
+            ':resources:/images/animated_characters/female_person/femalePerson',
+            ':resources:/images/animated_characters/robot/robot',
+            ':resources:/images/animated_characters/zombie/zombie',
+        ]
+
+        chosen_characters = random.choice(character_types)
+
+        idle_texture = arcade.load_texture(f'{chosen_characters}_idle.png')
+        self.idle_texture_pairs = idle_texture, idle_texture.flip_left_right()
+
+        self.walk_texture_pairs = []
+        for i in range(8):
+            texture = arcade.load_texture(f'{chosen_characters}_walk{i}.png')
+            self.walk_texture_pairs.append((texture,texture.flip_left_right()))
 
         # Prepare object for physic and camera
         self.physic_engine = None
@@ -50,13 +102,16 @@ class GameView(arcade.View):
     def setup(self):
         # Prepare for character
         self.player_list = arcade.SpriteList()
+        self.player = PlayerCharacter(self.idle_texture_pairs,self.walk_texture_pairs)
+        self.player.scale = PLAYER_SCALING
+        self.player_list.append(self.player)
         # Load from file here
-        self.player_sprite = arcade.Sprite(
-            ":resources:/images/animated_characters/female_person/femalePerson_idle.png",
-            scale=PLAYER_SCALING
-        )
-        self.player_list.append(self.player_sprite)
-        print(f"Characters : {self.player_sprite}")
+        # self.player_sprite = arcade.Sprite(
+        #     ":resources:/images/animated_characters/female_person/femalePerson_idle.png",
+        #     scale=PLAYER_SCALING
+        # )
+        # self.player_list.append(self.player)
+        # print(f"Characters : {self.player}")
 
         self.game_camera = arcade.Camera2D()
         self.gui_camera = arcade.Camera2D()
@@ -99,15 +154,15 @@ class GameView(arcade.View):
                     y = obj.shape[1]
 
                     y = self.map_height - y
-                    self.player_sprite.center_x = x
-                    self.player_sprite.center_y = y
+                    self.player.center_x = x
+                    self.player.center_y = y
                     print(f"Player spawn at x:{x} , y:{y}")
                     break
 
         # Load the platforms
         self.end_of_map = self.tile_map.width * GRID_PIXEL_SIZE
         self.physic_engine = arcade.PhysicsEnginePlatformer(
-            self.player_sprite,
+            self.player,
             self.tile_map.sprite_lists["platforms"],
             gravity_constant=GRAVITY
         )
@@ -159,31 +214,33 @@ class GameView(arcade.View):
                 self.game_over_text.draw()
 
     def on_update(self, delta_time):
-        if self.player_sprite.right >= self.end_of_map:
+        self.player_list.update()
+        self.player_list.update_animation()
+        if self.player.right >= self.end_of_map:
             if self.level < self.max_level:
                 self.level += 1  # kalau mau naik level
                 self.load_level(self.level)
-                self.player_sprite.center_x = 128
-                self.player_sprite.center_y = 64
-                self.player_sprite.change_x = 0
-                self.player_sprite.change_y = 0
+                self.player.center_x = 128
+                self.player.center_y = 64
+                self.player.change_x = 0
+                self.player.change_y = 0
             else:
                 self.game_over = True
 
-        hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.teleport_sprites)
+        hit_list = arcade.check_for_collision_with_list(self.player, self.teleport_sprites)
         for teleport in hit_list:
             target_name = teleport.properties.get("target")
             if target_name and target_name in self.teleport_targets:
                 target_obj = self.teleport_targets[target_name]
                 x, y = target_obj.shape[0], target_obj.shape[1]
                 y = self.map_height - y
-                self.player_sprite.center_x = x
-                self.player_sprite.center_y = y
+                self.player.center_x = x
+                self.player.center_y = y
                 print(f"Player teleported to {target_name} at x:{x} and y:{y}")
                 break
 
         if not self.game_over:
-            if self.player_sprite.center_y < -50:
+            if self.player.center_y < -50:
                 self.game_over = True
                 print("Game over : Player fall from the map!")
 
@@ -191,11 +248,11 @@ class GameView(arcade.View):
 
             self.game_camera.position = arcade.math.smerp_2d(
                 self.game_camera.position,
-                self.player_sprite.position,
+                self.player.position,
                 delta_time,
                 CAMERA_PAN_SPEED
             )
-        coin_hit = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
+        coin_hit = arcade.check_for_collision_with_list(self.player, self.coin_list)
         for coin in coin_hit:
             coin.remove_from_sprite_lists()
             self.score += 1
@@ -204,24 +261,24 @@ class GameView(arcade.View):
     def on_key_press(self,key,modifiers):
         if key == arcade.key.UP:
             if self.physic_engine.can_jump():
-                self.player_sprite.change_y = JUMP_SPEED
+                self.player.change_y = JUMP_SPEED
         if key == arcade.key.LEFT:
-            self.player_sprite.change_x = -MOVEMENT_SPEED
+            self.player.change_x = -MOVEMENT_SPEED
         if key == arcade.key.RIGHT:
-            self.player_sprite.change_x = MOVEMENT_SPEED
+            self.player.change_x = MOVEMENT_SPEED
 
         if key == arcade.key.ESCAPE:
             self.level = 1
             self.load_level(self.level)
-            self.player_sprite.center_x = 128
-            self.player_sprite.center_y = 64
-            self.player_sprite.change_x = 0
-            self.player_sprite.change_y = 0
+            self.player.center_x = 128
+            self.player.center_y = 64
+            self.player.change_x = 0
+            self.player.change_y = 0
             self.game_over = False
 
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
-            self.player_sprite.change_x = 0
+            self.player.change_x = 0
 
 def main():
     window = arcade.Window(SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_TITLE)
