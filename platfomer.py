@@ -191,13 +191,21 @@ class GameView(arcade.View):
         self.tile_map.sprite_lists["background"].draw()
 
         with self.game_camera.activate():
-            self.tile_map.sprite_lists['platforms'].draw()
-            self.tile_map.sprite_lists['coins'].draw()
-            self.tile_map.sprite_lists['stones'].draw()
-            self.tile_map.sprite_lists['benches'].draw()
-            self.tile_map.sprite_lists['fences'].draw()
-            self.tile_map.sprite_lists['trees'].draw()
-            self.tile_map.sprite_lists['teleport_up'].draw()
+            (self.tile_map.sprite_lists.get('benches') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('coins') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('platforms') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('stones') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('fences') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('trees') or arcade.SpriteList()).draw()
+            (self.tile_map.sprite_lists.get('teleport_up') or arcade.SpriteList()).draw()
+
+            # self.tile_map.sprite_lists['platforms'].draw()
+            # self.tile_map.sprite_lists['coins'].draw()
+            # self.tile_map.sprite_lists['stones'].draw()
+            # self.tile_map.sprite_lists['benches'].draw()
+            # self.tile_map.sprite_lists['fences'].draw()
+            # self.tile_map.sprite_lists['trees'].draw()
+            # self.tile_map.sprite_lists['teleport_up'].draw()
             # self.tile_map.sprite_lists['target_tp_up'].draw()
 
             #
