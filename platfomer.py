@@ -4,7 +4,7 @@ import arcade
 import random
 
 
-SCREEN_TITLE = "Lesson 7&8 - Integrating tile maps"
+SCREEN_TITLE = "SUPER EPIC MMORPG GAME"
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
 
@@ -94,6 +94,7 @@ class GameView(arcade.View):
         # Optional : Count the fps of the games
         self.fps_text = arcade.Text("Fps :", 10,20, arcade.csscolor.DARK_GREEN, 15)
         self.game_over_text = None
+        self.score_text = arcade.Text("Coins: ",20, 20,arcade.csscolor.GOLD,30)
 
         # start level
         self.level = 0
@@ -207,15 +208,13 @@ class GameView(arcade.View):
             # self.tile_map.sprite_lists['trees'].draw()
             # self.tile_map.sprite_lists['teleport_up'].draw()
             # self.tile_map.sprite_lists['target_tp_up'].draw()
-
-            #
-
             self.player_list.draw()
 
         with self.gui_camera.activate():
             self.fps_text.text = f"Fps : {1 / self.window.delta_time: .0f}"
             self.fps_text.draw()
-
+            self.score_text.text = f'Score : {self.score}'
+            self.score_text.draw()
             # Game over text
             if self.game_over:
                 self.game_over_text.position = self.window.center
