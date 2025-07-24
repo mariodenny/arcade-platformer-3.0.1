@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_1.tmj",
+    "activeFile": "level_3.tmj",
     "expandedProjectPaths": [
         "."
     ],
@@ -55,24 +55,24 @@
             "scale": 1.5,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 56,
-                "y": 189.66666666666663
+                "x": 512,
+                "y": 384.33333333333337
             }
         },
         "level_2.tmj": {
             "scale": 1.1033854166666666,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 778.5130988907247,
-                "y": 550.5782393202738
+                "x": 512.0604201085674,
+                "y": 383.81873967429794
             }
         },
         "level_3.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 660.6666666666666,
-                "y": 216.99999999999997
+                "x": 213.33333333333334,
+                "y": 593
             }
         },
         "stones.tsj": {
@@ -121,12 +121,12 @@
     "recentFiles": [
         "tileset_greenzone.tsj",
         "fence_greenzone.tsj",
+        "level_1.tmj",
+        "trees.tsj",
+        "stones.tsj",
+        "level_2.tmj",
         "background.tsj",
         "level_3.tmj",
-        "level_2.tmj",
-        "stones.tsj",
-        "trees.tsj",
-        "level_1.tmj",
         "tree.tsj",
         "Card.tsj",
         "tiles.tsj"

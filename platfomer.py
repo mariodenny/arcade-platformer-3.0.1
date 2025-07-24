@@ -53,8 +53,165 @@ class PlayerCharacter(arcade.Sprite):
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
 
-class GameView(arcade.View):
+class InstructionView(arcade.View):
     def __init__(self):
+        super().__init__()
+        self.title_text = None
+        self.instruction_text = None
+
+    def on_show_view(self):
+        arcade.set_background_color(arcade.csscolor.GREEN)
+
+        self.title_text = arcade.Text(
+            "HOW TO PLAY",
+            self.window.center_x,
+            self.window.height - 100,
+            arcade.csscolor.GOLD,
+            font_size = 32,
+            anchor_x='center'
+        )
+
+        self.instruction_text = arcade.Text(
+            "Good Luck! Arrow Keys (left, right), Up keys to jump \n"
+            "ESC for escape, I for manual, and R for restart",
+            self.window.center_x,
+            self.window.height - 250,
+            arcade.csscolor.BLACK,
+            font_size=10,
+            anchor_x='center'
+        )
+    def on_draw(self):
+        self.clear()
+        self.title_text.draw()
+        self.instruction_text.draw()
+
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.ENTER:
+            character_view =SelectCharacterView()
+            self.window.show_view(character_view)
+        elif key == arcade.key.ESCAPE:
+            self.window.close()
+
+class SelectCharacterView(arcade.View):
+    def __init__(self):
+        super().__init__()
+        self.character_types = [
+            ':resources:/images/animated_characters/female_adventurer/femaleAdventurer',
+            ':resources:/images/animated_characters/male_adventurer/maleAdventurer',
+            ':resources:/images/animated_characters/robot/robot'
+        ]
+
+        self.character_names = [
+            "",
+            "",
+            ""
+        ]
+
+        self.selected_character = 0
+        self.character_sprites = []
+        self.title_text = None
+        self.instruction_text = None
+        self.character_name_text = None
+
+        self.character_scale = PLAYER_SCALING
+        self.selection_border_padding = 30
+        self.selection_border_thickness = 5
+        self.character_spacing = 100
+
+    def on_show_view(self):
+        arcade.set_background_color(arcade.color.DARK_GREEN)
+
+        self.character_sprite_list = arcade.SpriteList()
+        self.character_sprites = []
+
+        for character_path in self.character_types:
+            try:
+                texture = arcade.load_texture(f"{character_path}_idle.png")
+                sprite = arcade.Sprite(texture, scale=self.character_scale)
+                self.character_sprites.append(sprite)
+                self.character_sprite_list.append(sprite)
+            except:
+                sprite =arcade.Sprite(scale=self.character_scale)
+                self.character_sprites.append(sprite)
+                self.character_sprite_list.append(sprite)
+
+        center_x = self.window.center_x
+        center_y = self.window.center_y
+        start_x = center_x - (len(self.character_sprites) - 1)* self.character_sprites//2
+
+        for i, sprite in enumerate(self.character_sprites):
+            sprite.center_x = start_x + i * self.character_spacing
+            sprite.center_y = center_y
+
+        self.title_text = arcade.Text(
+            "CHOOSE YOUR CHARACTERS!",
+            self.window.height - 100,
+            arcade.color.WHITE,
+            font_size = 30,
+            anchor_x = "center"
+        )
+
+        self.instruction_text = arcade.Text(
+            "Use LEFT/RIGHT arrows to select, ENTER to start game",
+            self.window.center_x,
+            100,
+            arcade.color.WHITE,
+            font_size=16,
+            anchor_x="center"
+        )
+
+        self.character_name_text = arcade.Text(
+            self.character_names[self.selected_character],
+            self.window.center_x,
+            center_y - 80,
+            arcade.color.YELLOW,
+            font_size = 20,
+            anchor_x = "center"
+        )
+
+    def on_draw(self):
+        self.clear()
+        if hasattr(self,'character_sprites') and self.character_sprites:
+            selected_sprite = self.character_sprites[self.selected_character]
+            if selected_sprite.texture:
+                arcade.draw_rect_outline(
+                    arcade.LRBT(
+                        selected_sprite.center_x - (selected_sprite.width + self.selection_border_padding) // 2,
+                        selected_sprite.center_x + (selected_sprite.width + self.selection_border_padding) // 2,
+                        selected_sprite.center_y - (selected_sprite.height + self.selection_border_padding) // 2,
+                        selected_sprite.center_y + (selected_sprite.height + self.selection_border_padding) // 2
+                    ),
+                    arcade.color.YELLOW, self.selection_border_padding
+                )
+            if hasattr(self, 'character_sprite_list'):
+                self.character_sprite_list.draw()
+
+                self.title_text.draw()
+                self.instruction_text.draw()
+                self.character_name_text.draw()
+
+    def on_key_press(self,key,modifiers):
+        if key == arcade.key.LEFT:
+            self.selected_character = (self.selected_character - 1) % len(self.character_types)
+            self.character_name_text.text = self.character_names[self.selected_character]
+        elif key == arcade.key.RIGHT:
+            self.selected_character = (self.selected_character + 1) % len(self.character_types)
+            self.character_name_text.text = self.character_names[self.selected_character]
+        elif key == arcade.key.ENTER:
+            game_view = GameView(selected_character = self.selected_character)
+            game_view.setup()
+            game_view.level = 1
+            game_view.load_level(game_view.level)
+            self.window.show_view(game_view)
+        elif key == arcade.key.ESCAPE:
+            instruction_view = InstructionView()
+            self.window.show_view(instruction_view)
+
+class GameOverView(arcade.View):
+    pass
+
+class GameView(arcade.View):
+    def __init__(self, selected_character= None):
         super().__init__()
         # Prepare object for loading map
         self.tile_map = None
@@ -64,22 +221,35 @@ class GameView(arcade.View):
         self.player_sprite = None
         self.score = 0
 
-        character_types = [
-            ':resources:images/animated_characters/female_adventurer/femaleAdventurer',
-            ':resources:/images/animated_characters/female_person/femalePerson',
-            ':resources:/images/animated_characters/robot/robot',
-            ':resources:/images/animated_characters/zombie/zombie',
+        self.selected_character = selected_character
+        self.character_types = [
+            ':resources:/images/animated_characters/female_adventurer/femaleAdventurer',
+            ':resources:/images/animated_characters/male_adventurer/maleAdventurer',
+            ':resources:/images/animated_characters/robot/robot'
         ]
 
-        chosen_characters = random.choice(character_types)
+        if selected_character is not None:
+            chosen_characters = self.character_types[selected_character]
+        else:
+            chosen_characters = random.choice(self.character_types)
+            self.selected_character = self.character_types.index(chosen_characters)
 
-        idle_texture = arcade.load_texture(f'{chosen_characters}_idle.png')
-        self.idle_texture_pairs = idle_texture, idle_texture.flip_left_right()
+        try:
+            idle_texture = arcade.load_texture(f"{chosen_characters}_idle.png")
+            self.idle_texture_pairs = idle_texture,idle_texture.flip_left_right()
+        except Exception as e:
+            print(f"Error load idle texture {e}")
+            self.idle_texture_pairs = None, None
 
         self.walk_texture_pairs = []
-        for i in range(8):
-            texture = arcade.load_texture(f'{chosen_characters}_walk{i}.png')
-            self.walk_texture_pairs.append((texture,texture.flip_left_right()))
+        try:
+            for i in range(8):
+                texture = arcade.load_texture(f"{chosen_characters}_walk{i}.png")
+                self.walk_texture_pairs.append((texture, texture.flip_left_right()))
+        except Exception as e:
+            print(f"Error loading walk animation {e}")
+            self.walk_texture_pairs = []
+
 
         # Prepare object for physic and camera
         self.physic_engine = None
@@ -289,10 +459,9 @@ class GameView(arcade.View):
 
 def main():
     window = arcade.Window(SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_TITLE)
-    game = GameView()
-    game.setup()
 
-    window.show_view(game)
+    instruction_view = InstructionView()
+    window.show_view(instruction_view)
     window.run()
 
 main()
