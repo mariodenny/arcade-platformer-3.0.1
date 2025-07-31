@@ -48,31 +48,45 @@
         },
         "level_1.tmj": {
             "expandedObjectLayers": [
-                18,
                 19,
-                11
+                11,
+                18
             ],
             "scale": 1.5,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 512,
-                "y": 384.33333333333337
+                "x": 221.33333333333334,
+                "y": 572.3333333333334
             }
         },
         "level_2.tmj": {
-            "scale": 1.1033854166666666,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 512.0604201085674,
-                "y": 383.81873967429794
+                "x": 502.6666666666666,
+                "y": 301.99999999999994
             }
         },
         "level_3.tmj": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 213.33333333333334,
-                "y": 593
+                "x": 122,
+                "y": 498.99999999999994
+            }
+        },
+        "level_4.tmj": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 267,
+                "y": 648.5
             }
         },
         "stones.tsj": {
@@ -103,7 +117,7 @@
         }
     },
     "last.imagePath": "C:/Users/KNCEM/Downloads/craftpix-net-846754-free-green-zone-tileset-pixel-art/2 Background/Night",
-    "map.height": 24,
+    "map.height": 32,
     "map.lastUsedFormat": "json",
     "map.width": 32,
     "openFiles": [

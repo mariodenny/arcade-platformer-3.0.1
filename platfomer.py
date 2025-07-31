@@ -87,7 +87,7 @@ class InstructionView(arcade.View):
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
-            character_view =SelectCharacterView()
+            character_view = SelectCharacterView()
             self.window.show_view(character_view)
         elif key == arcade.key.ESCAPE:
             self.window.close()
@@ -102,9 +102,9 @@ class SelectCharacterView(arcade.View):
         ]
 
         self.character_names = [
-            "",
-            "",
-            ""
+            "A",
+            "B",
+            "C"
         ]
 
         self.selected_character = 0
@@ -115,8 +115,8 @@ class SelectCharacterView(arcade.View):
 
         self.character_scale = PLAYER_SCALING
         self.selection_border_padding = 30
-        self.selection_border_thickness = 5
-        self.character_spacing = 100
+        self.selection_border_thickness = 4
+        self.character_spacing = 180
 
     def on_show_view(self):
         arcade.set_background_color(arcade.color.DARK_GREEN)
@@ -137,7 +137,7 @@ class SelectCharacterView(arcade.View):
 
         center_x = self.window.center_x
         center_y = self.window.center_y
-        start_x = center_x - (len(self.character_sprites) - 1)* self.character_sprites//2
+        start_x = center_x - (len(self.character_sprites) - 1)* self.character_spacing//2
 
         for i, sprite in enumerate(self.character_sprites):
             sprite.center_x = start_x + i * self.character_spacing
@@ -145,6 +145,7 @@ class SelectCharacterView(arcade.View):
 
         self.title_text = arcade.Text(
             "CHOOSE YOUR CHARACTERS!",
+            self.window.center_x,
             self.window.height - 100,
             arcade.color.WHITE,
             font_size = 30,
@@ -268,7 +269,7 @@ class GameView(arcade.View):
 
         # start level
         self.level = 0
-        self.max_level = 3
+        self.max_level = 4
 
     def setup(self):
         # Prepare for character
@@ -397,8 +398,8 @@ class GameView(arcade.View):
             if self.level < self.max_level:
                 self.level += 1  # kalau mau naik level
                 self.load_level(self.level)
-                self.player.center_x = 128
-                self.player.center_y = 64
+                # self.player.center_x = 128
+                # self.player.center_y = 64
                 self.player.change_x = 0
                 self.player.change_y = 0
             else:
@@ -447,8 +448,8 @@ class GameView(arcade.View):
         if key == arcade.key.ESCAPE:
             self.level = 1
             self.load_level(self.level)
-            self.player.center_x = 128
-            self.player.center_y = 64
+            # self.player.center_x = 128
+            # self.player.center_y = 64
             self.player.change_x = 0
             self.player.change_y = 0
             self.game_over = False
